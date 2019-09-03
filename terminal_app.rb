@@ -12,6 +12,7 @@ class Product
     def inventory
         puts "Name of the product= #{@name}
         Inventory level = #{@inventory}"
+        # write some code
     end
 
     def inventory_remaining=(quantity)
