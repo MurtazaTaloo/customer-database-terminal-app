@@ -45,7 +45,44 @@ all_users << user2
 user3 = User.new("Tom","tom_11@gmail.com", "21 yarra st")
 all_users << user3
 
+# all_users.each do |element|
+#     puts element.name
+#     end
+puts "User Menu:
+1.Current stock level
+2.Total sales
+3.Unique customers' email addresses
+4.All customers' email addresses
+5.All customers detailed list.
+6.Exit"
+print ">"
+user_selection = gets.strip.to_i
 
+product_1_orders = 0
+product_2_orders = 0
+product_3_orders = 0
+
+until user_selection == 6
+    if user_selection == 1
+        
+        total_shopping = product_1.price * quantity
+        #     product_1.inventory_remaining=(quantity)
+        #     product_1.inventory
+
+    elsif user_selection == 2
+    
+       
+    elsif user_selection == 3
+    
+
+    elsif user_selection == 4
+    
+
+    elsif user_selection == 5
+    
+    end
+
+end
 
 # puts "Please enter your name:"
 # print ">"
@@ -127,13 +164,8 @@ all_users << user3
 # user = User.new(name,email,address)
 # all_users << user
 
-all_users.each do |element|
-puts element.name.address
-end
 
-all_users.each do |element|
-    puts element.name
-    end
+
 
 
     # .user menu
