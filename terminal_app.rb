@@ -48,7 +48,7 @@ all_users << user3
 # all_users.each do |element|
 #     puts element.name
 #     end
-puts "User Menu:
+puts "\n\nUser Menu:
 1.Current stock level
 2.Total sales
 3.Unique customers' email addresses
@@ -58,16 +58,30 @@ puts "User Menu:
 print ">"
 user_selection = gets.strip.to_i
 
-product_1_orders = 0
-product_2_orders = 0
-product_3_orders = 0
+product_1_orders = 200
+product_2_orders = 300
+product_3_orders = 500
 
 until user_selection == 6
     if user_selection == 1
-        
-        total_shopping = product_1.price * quantity
-        #     product_1.inventory_remaining=(quantity)
-        #     product_1.inventory
+        if product_1_orders > 0
+           product_1_total =  product_1.price * product_1_orders
+           product_1.inventory_remaining=(product_1_orders)
+        end
+        if product_2_orders > 0
+            product_2_total =  product_2.price * product_2_orders
+            product_2.inventory_remaining=(product_2_orders)
+
+        end
+        if product_3_orders > 0
+            product_3_total =  product_3.price * product_3_orders
+            product_3.inventory_remaining=(product_3_orders)
+
+        end
+        product_1.inventory
+        product_2.inventory
+        product_3.inventory
+      
 
     elsif user_selection == 2
     
@@ -81,6 +95,17 @@ until user_selection == 6
     elsif user_selection == 5
     
     end
+    
+    
+    puts "\n\nUser Menu:
+1.Current stock level
+2.Total sales
+3.Unique customers' email addresses
+4.All customers' email addresses
+5.All customers detailed list.
+6.Exit"
+print ">"
+user_selection = gets.strip.to_i
 
 end
 
