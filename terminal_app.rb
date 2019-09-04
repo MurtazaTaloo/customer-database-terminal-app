@@ -1,5 +1,6 @@
 require 'pry'
 require 'colorize'
+require 'csv'
 
 class Product
     attr_accessor :name, :price
@@ -48,131 +49,145 @@ all_users << user3
 # all_users.each do |element|
 #     puts element.name
 #     end
-puts "\n\nUser Menu:
-1.Current stock level
-2.Total sales
-3.Unique customers' email addresses
-4.All customers' email addresses
-5.All customers detailed list.
-6.Exit"
-print ">"
-user_selection = gets.strip.to_i
 
-product_1_orders = 200
-product_2_orders = 300
-product_3_orders = 500
 
-until user_selection == 6
-    if user_selection == 1
-        if product_1_orders > 0
-           product_1_total =  product_1.price * product_1_orders
-           product_1.inventory_remaining=(product_1_orders)
-        end
-        if product_2_orders > 0
-            product_2_total =  product_2.price * product_2_orders
-            product_2.inventory_remaining=(product_2_orders)
 
-        end
-        if product_3_orders > 0
-            product_3_total =  product_3.price * product_3_orders
-            product_3.inventory_remaining=(product_3_orders)
-
-        end
-        product_1.inventory
-        product_2.inventory
-        product_3.inventory
-      
-
-    elsif user_selection == 2
-    
-       
-    elsif user_selection == 3
-    
-
-    elsif user_selection == 4
-    
-
-    elsif user_selection == 5
-    
-    end
-    
-    
-    puts "\n\nUser Menu:
-1.Current stock level
-2.Total sales
-3.Unique customers' email addresses
-4.All customers' email addresses
-5.All customers detailed list.
-6.Exit"
-print ">"
-user_selection = gets.strip.to_i
-
+# puts "Please enter your email address to continue:"
+# print ">"
+# login = gets.strip
+# file = CSV.open("customer_database.csv", "a+")
+# #  file = File.read('customer_database.csv') 
+# customer_details = []
+file = CSV.open('customer_database.csv', 'a+') do |row|
+ puts row.class 
 end
+#  p file.class
+        # customers = file.split("\n")
+        # customers.shift
+        # customers.each_with_index do |customer, index|
 
-# puts "Please enter your name:"
-# print ">"
-# name = gets.chomp
-# puts "Please your email:"
-# print ">"
-# email = gets.strip
-# puts "Please enter your address"
-# print ">"
-# address = gets.chomp
 
-# users = []
+# if login == 
 
-# user1 = User.new(name,email,address)
 
-# users << user1
+#  puts "\n\nPlease chose from the following options:
+#     1.Water bottle  ($10)
+#     2.Travel mug    ($15)
+#     3.Power bank    ($30)
+#     4.exit"
+#     print ">"
+#     selection = gets.chomp.to_i
 
-# p users
-# puts "Please chose from the following options:
+#     product_1_orders = 0
+#     product_2_orders = 0    
+#     product_3_orders = 0
+
+#     until selection == 4
+
+#     puts "Enter the quantity needed:"
+#     print ">"
+#     quantity = gets.strip.to_i
+    
+  
+#     if selection == 1
+#         product_1_orders += quantity
+#     elsif selection == 2
+#         product_2_orders += quantity
+#     elsif selection == 3
+#         product_3_orders += quantity
+#     end
+# puts "\n\nPlease chose from the following options:
 # 1.Water bottle  ($10)
 # 2.Travel mug    ($15)
 # 3.Power bank    ($30)
 # 4.exit"
 # print ">"
-# selection = gets.chomp
-# # p selection
-
-## want this to work until user choses .4
-# until selection == 4
-
-
-    # puts "Please chose from the following options:
-    # 1.Water bottle  ($10)
-    # 2.Travel mug    ($15)
-    # 3.Power bank    ($30)
-    # 4.exit"
-    # print ">"
-    # selection = gets.chomp.to_i
-
-    # puts "Enter the quantity needed:"
-    # print ">"
-    # quantity = gets.strip.to_i
+# selection = gets.chomp.to_i
+# end
     
+# puts "\n\nUser Menu:
+# 1.Current stock level
+# 2.Total orders
+# 3.Total sales for the day
+# 4.Unique customers' email addresses
+# 5.All customers' email addresses
+# 6.All customers detailed list.
+# 7.Exit"
+# print ">"
+# user_selection = gets.strip.to_i
 
 
-    # if selection == 1
-    #     total_shopping = product_1.price * quantity
-    #     product_1.inventory_remaining=(quantity)
-    #     product_1.inventory
+# total = 0
+# product_1_total = product_1.price * product_1_orders
+# product_2_total = product_2.price * product_2_orders
+# product_3_total = product_3.price * product_3_orders
 
-    # elsif selection == 2
-    #     total_shopping = product_2.price * quantity
-    #     product_2.inventory_remaining=(quantity)
-    #     product_2.inventory
+# until user_selection == 7
+#     if user_selection == 1
+#         if product_1_orders > 0 
+#            product_1.inventory_remaining=(product_1_orders)
+#         end
+#         if product_2_orders > 0 
+#             product_2.inventory_remaining=(product_2_orders)
 
-    # elsif selection == 3
-    #     total_shopping = product_3.price * quantity
-    #     product_3.inventory_remaining=(quantity)
-    #     product_3.inventory
+#         end
+#         if product_3_orders > 0
+#             product_3.inventory_remaining=(product_3_orders)
 
-    # end
-    # puts
-    # puts "Total shopping = #{total_shopping}"
+#         end
+#         product_1.inventory
+#         product_2.inventory
+#         product_3.inventory
+      
 
-    # puts 
+#     elsif user_selection == 2
+
+#         puts "\n#{product_1.name} = #{product_1_orders}\n#{product_2.name} =  #{product_2_orders}\n#{product_3.name} =  #{product_3_orders}"
+       
+#     elsif user_selection == 3
+
+#         total = product_1_total + product_2_total
+#         puts "\n\nTotal Sales for the dat = $#{total}" 
+
+#     elsif user_selection == 4
+#         file = File.read('pract_database.csv')
+#         # file = File.read('customer_database.csv') 
+#         # customers = file.split("\n")
+#         # customers.shift
+#         # customers.each_with_index do |customer, index|
+#         #     puts "#{index + 1}) #{customer}" 
+#     elsif user_selection == 5
+
+    
+#     elsif user_selection == 6
+    
+#     end
+    
+    
+#     puts "\n\nUser Menu:
+#     1.\n\nUser Menu:
+#     1.Current stock level
+#     2.Total orders
+#     3.Total sales for the day
+#     4.Unique customers' email addresses
+#     5.All customers' email addresses
+#     6.All customers detailed list.
+#     7.Exit"
+#     print ">"
+#     user_selection = gets.strip.to_i
+
+# end
+
+
+
+
+
+
+   
+
+
+
+
 
 
 
