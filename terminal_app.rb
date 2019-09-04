@@ -57,9 +57,34 @@ all_users << user3
 # login = gets.strip
 # file = CSV.open("customer_database.csv", "a+")
 # #  file = File.read('customer_database.csv') 
+
+# puts "Enter your email address to authenticte:"
+# print ">"
+
+# puts "Enter your email address:"
+# print ">"
+# email = gets.strip
+# puts "Enter your full name:"
+# print ">"
+# name = gets.strip
+# puts "Enter your mobile number:"
+# print ">"
+# mob = gets.strip
+
 # customer_details = []
-file = CSV.open('customer_database.csv', 'a+') do |row|
- puts row.class 
+# customer_details << name
+# customer_details << email
+# customer_details << mob
+# p customer_details
+
+
+CSV.open('customer_database.csv', 'a+') do |row|
+    row << customer_details
+end
+
+CSV.foreach("customer_database.csv") do |row|
+
+p row
 end
 #  p file.class
         # customers = file.split("\n")
@@ -109,7 +134,7 @@ end
 # 1.Current stock level
 # 2.Total orders
 # 3.Total sales for the day
-# 4.Unique customers' email addresses
+# 4.New customers' email addresses
 # 5.All customers' email addresses
 # 6.All customers detailed list.
 # 7.Exit"
@@ -169,7 +194,7 @@ end
 #     1.Current stock level
 #     2.Total orders
 #     3.Total sales for the day
-#     4.Unique customers' email addresses
+#     4.New customers' email addresses
 #     5.All customers' email addresses
 #     6.All customers detailed list.
 #     7.Exit"
