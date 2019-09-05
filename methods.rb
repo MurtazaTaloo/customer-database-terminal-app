@@ -42,6 +42,7 @@ def display_products(all_products)
     Price: $#{product.price}
     Inventory: #{product.inventory} pieces
     Description: #{product.description}
+    Supplier: #{product.supplier}
     """
   end
   

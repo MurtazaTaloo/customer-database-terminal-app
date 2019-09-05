@@ -8,16 +8,16 @@ require_relative 'methods'
 
 # database of products
 all_products = [
-  Product.new("Water bottle", 10, 1000, "amazing product"),
-  Product.new("Travel mug", 15, 1000, "amazing product"),
-  Product.new("Power bank", 30, 1000, "amazing product"),
-  Product.new("Pencil case", 5, 1000, "amazing product"),
-  Product.new("Drone", 80, 1000, "amazing product"),
-  Product.new("Shirt", 30, 1000, "amazing product"),
-  Product.new("Chair", 30, 1000, "amazing product"),
-  Product.new("Phone holder", 10, 1000, "amazing product"),
-  Product.new("Phone case", 12, 1000, "amazing product"),
-  Product.new("Charger", 8, 1000, "amazing product")
+  Product.new("Water bottle", 10, 1000, "amazing product","ABC supplier"),
+  Product.new("Travel mug", 15, 1000, "amazing product", "MOJO supplier"),
+  Product.new("Power bank", 30, 1000, "amazing product", "MAMA supplier"),
+  Product.new("Pencil case", 5, 1000, "amazing product","ABC Supplier"),
+  Product.new("Drone", 80, 1000, "amazing product", "DEF Supplier"),
+  Product.new("Shirt", 30, 1000, "amazing product", "HHH supplier"),
+  Product.new("Chair", 30, 1000, "amazing product", "KKK suppier"),
+  Product.new("Phone holder", 10, 1000, "amazing product", "LLL supplier"),
+  Product.new("Phone case", 12, 1000, "amazing product", "KKK supplier"),
+  Product.new("Charger", 8, 1000, "amazing product", "TTT supplier")
 ]
 
 
@@ -27,7 +27,7 @@ loop do
   1.View all Inventory
   2.View item description
   3.Process order
-  4.View items to be ordered
+  4.Print items that need ordering.
   5.Exit
   """
   puts "Make a selection between 1 and 5 and press enter"
@@ -74,20 +74,16 @@ loop do
     end
 
   when 4
-    all_products.each do |product|
-      if product.inventory < 500
-        CSV.open("Place-orders.csv","a+") do |row|
-        row << ["product"]
+    CSV.open("Place-orders.csv","a+") do |csv|
+        all_products.each do |product|
+            if product.inventory < 500
+                str = "Product name = #{product.name},  Product Supplier = #{product.supplier}, Current Inventory = #{product.inventory}"
+                csv << [str]
+                puts "\n\nProduct name = #{product.name} \n\nProduct supplier =  #{product.supplier} \n\nCurrent inventory = #{product.inventory}"
+            end
         end
-        # puts """
-        # Product = #{product.name}
-        # Inventory = #{product.inventory}
-        # """
-        end
-      # name = product.name
-      # inventory =  product.inventory
-      # puts "#{name}= #{inventory}"
     end
+
   when 5
     break
   end

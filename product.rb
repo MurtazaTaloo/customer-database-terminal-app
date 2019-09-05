@@ -1,10 +1,11 @@
 class Product
-    attr_accessor :name, :price, :inventory, :description
-    def initialize(name, price, inventory,description)
+    attr_accessor :name, :price, :inventory, :description, :supplier
+    def initialize(name, price, inventory,description,supplier)
         @name = name
         @price = price
         @inventory = inventory
         @description = description
+        @supplier = supplier
     end
 
     # def inventory
