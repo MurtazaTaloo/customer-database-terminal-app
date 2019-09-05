@@ -76,10 +76,13 @@ loop do
   when 4
     all_products.each do |product|
       if product.inventory < 500
-        puts """
-        Product = #{product.name}
-        Inventory = #{product.inventory}
-        """
+        CSV.open("Place-orders.csv","a+") do |row|
+        row << ["product"]
+        end
+        # puts """
+        # Product = #{product.name}
+        # Inventory = #{product.inventory}
+        # """
         end
       # name = product.name
       # inventory =  product.inventory
