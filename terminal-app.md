@@ -28,8 +28,28 @@ The member of the target audience or the user will be displayed a menu of 5 item
 * When user choses the option 2 from the main menu he is prompted with the message "Pick one of these items by typing its name and pressing enter:" If the user types a wrong product or makes a typing error he is displayed the message "Product not found\nPlease type one of item from ths list and press enter".
 * Selecting option 3 from the main menu displays a sub menu with the message "Make a selecton between 1 and 2" for the user to chose from either processing order or exiting the sub menu. This allows user to process multiple orders from the same sub menu.
 
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
-| Paragraph | Text |
+| Feature | Steps to Build | Time It Took To Complete |
+| ----------- | ----------- | ----------- |
+| Viewing all of the inventory | Firstly, I had to make a product class to define my products and their associated attributes. I then had to create a loop for my menu and in this menu there was a method that looped through all of product objects and displayed them. | 2 hours |
+| View each item in detail | This menu takes input from the user asking the item he wishes to see the details to. I created a loop to look through all the items in the array of objects(products) to display the item user is interested in | 3 hours |
+| Process the order | Taking user input to enter the product and quantity of the orders at hand to reflect those changes in the inventory. I created a loop to keep asking user for orders until user choses to exit from this sub menu to main menu | 2 hours |
+| Print items need ordering from manufacturer | Looped through all the products in the inventory to find the products with stock less than 500 to be printed | 1 hour |
+
+
+
+## Help file
+
+### Steps to install the application
+Run the bash file
+
+### Dependencies
+* Must have ruby insatlled on the system
+* Must have following gems intalled :
+1. colorize
+2. Terminal table
+
+### Different Features
+1. Displays all the products in the inventory at hand. When selected option 1 from menu the user is displayed all the products in the stock with their prices and inventory level in a very easy to read table format and all the item with quantity at hand less than 500 will have its quantity displayed in Red color so it stands out in the list of many products.
+2. ## Option 2 lets you see more details of an individual item including full description.?
+3. Option 3 lets you enter the product name and quantity of the orders received so it can reflects those changes on the inventory level.
+4. ## Option 4 displays only the list of products low on stock which can be readily used to place orders for those items promptly.
