@@ -64,7 +64,7 @@ def find_one_item(all_products)
    
     while product == nil
         puts ""
-        puts "Pick one of these items:"
+        puts "Pick one of these items by typing its name and pressing enter:\n"
         display_products_names(all_products)
         print "> "
         item = gets.chomp.capitalize
@@ -73,12 +73,9 @@ def find_one_item(all_products)
             product.name == item
         end
         
-        puts "Product not found"
+        puts "\n\nProduct not found\nPlease type one of the items from ths list and press enter"
     end
     
-    # product = all_products.find do |product|
-    #     product.name == item
-    # end 
     puts """
     Name: #{product.name}
     Price: $#{product.price}
@@ -108,7 +105,7 @@ loop do
     4.View items to be ordered  
     5.Exit
     """
-    puts "Make a selection between 1 and 5"
+    puts "Make a selection between 1 and 5 and press enter"
     print "> "
     selection = gets.chomp.to_i
     case selection
@@ -116,35 +113,39 @@ loop do
         display_products(all_products)
     when 2
         find_one_item(all_products)
-        ##user input for selection errors if the input is mistyped
     when 3
-        puts """
-        User Menu:
-        1.Process an order
-        2.exit
-        \nMake a selecton between 1 and 2
-        """
-        print ">"
-        selection = gets.strip.to_i
-        ##user can input enter anything and it will not error
-            until selection == 2 
-            display_products_names(all_products)
-            puts "Enter the name of the product:"
-            print ">"
-            product = gets.strip.capitalize
-            puts "Enter the quantity of the product you need:"
-            print ">"
-            quantity = gets.strip.to_i
-
-            process_order(product,quantity,all_products)
-        
             puts """
             User Menu:
-            1.Process another order
+            1.Process an order
             2.exit
+            \nMake a selecton between 1 and 2
             """
             print ">"
             selection = gets.strip.to_i
+
+            while selection != 2 && selection != 1
+                puts "\nwrong input\nPlease chose between 1 and 2"
+                selection = gets.strip.to_i
+            end
+
+            until selection == 2
+                display_products_names(all_products)
+                puts "Enter the name of the product:"
+                print ">"
+                product = gets.strip.capitalize
+                puts "Enter the quantity of the product you need:"
+                print ">"
+                quantity = gets.strip.to_i
+
+                process_order(product,quantity,all_products)
+            
+                puts """
+                User Menu:
+                1.Process another order
+                2.exit
+                """
+                print ">"
+                selection = gets.strip.to_i
             end
 
     when 4
