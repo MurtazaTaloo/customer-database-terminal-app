@@ -4,11 +4,12 @@ require 'csv'
 require 'terminal-table'
 
 class Product
-    attr_accessor :name, :price, :inventory
-    def initialize(name, price, inventory)
+    attr_accessor :name, :price, :inventory, :description
+    def initialize(name, price, inventory,description)
         @name = name
         @price = price
         @inventory = inventory
+        @description = description
     end
 
     # def inventory
@@ -26,57 +27,85 @@ end
 
 
 all_products = [
-    Product.new("Water bottle", 10,1000),
-    Product.new("Travel mug", 15,1000),
-    Product.new("Power bank", 30,1000),
-    Product.new("Pencil case", 5,1000),
-    Product.new("Drone", 80,1000),
-    Product.new("Shirt", 30,1000),
-    Product.new("Chair", 30,1000),
-    Product.new("Phone holder", 10,1000),
-    Product.new("Phone case", 12,1000),
-    Product.new("Charger", 8,1000)
+    Product.new("Water bottle", 10,1000,"amazing product"),
+    Product.new("Travel mug", 15,1000,"amazing product"),
+    Product.new("Power bank", 30,1000,"amazing product"),
+    Product.new("Pencil case", 5,1000,"amazing product"),
+    Product.new("Drone", 80,1000,"amazing product"),
+    Product.new("Shirt", 30,1000,"amazing product"),
+    Product.new("Chair", 30,1000,"amazing product"),
+    Product.new("Phone holder", 10,1000,"amazing product"),
+    Product.new("Phone case", 12,1000,"amazing product"),
+    Product.new("Charger", 8,1000,"amazing product")
 ]
 
-table = all_products.map do |product|
-    [product.name, product.price, product.inventory]
-end 
-
-puts Terminal::Table.new({:headings => ['Name', 'Price $', 'Inventory'], :rows => table})
 
 def display_products(all_products)
-    all_products.each do |product|
-    puts """
-    Name: #{product.name}
-    Price: #{product.price}
-    """
-    end
+    table = all_products.map do |product|
+        if product.inventory < 500
+            inventory = product.inventory.to_s.colorize(:red)
+        else 
+            inventory = product.inventory.to_s
+        end 
+        [product.name, product.price, inventory]
+    end 
+    puts Terminal::Table.new({headings: ['Name', 'Price $', 'Inventory'], rows: table})
 end 
 
+def display_products_names(all_products)
+    all_products.each do |product|
+    puts product.name
+    end
+end
+
 def find_one_item(all_products)
-    puts ""
-    puts "Pick one of these items"
-    display_products(all_products)
-    print "> "
-    item = gets.chomp
-    product = all_products.find do |product|
-        product.name == item
-    end 
+
+    product = nil
+   
+    while product == nil
+        puts ""
+        puts "Pick one of these items:"
+        display_products_names(all_products)
+        print "> "
+        item = gets.chomp.capitalize
+
+        product = all_products.find do |product|
+            product.name == item
+        end
+        
+        puts "Product not found"
+    end
+    
+    # product = all_products.find do |product|
+    #     product.name == item
+    # end 
     puts """
     Name: #{product.name}
-    Price: #{product.price}
-    Inventory: #{product.inventory}
+    Price: $#{product.price}
+    Inventory: #{product.inventory} pieces
+    Description: #{product.description}
     """
-end  
+end
+
+def process_order(product,quantity,all_products)
+
+ all_products.each do |item|
+    if item.name == product
+        item.inventory_remaining(quantity)
+        puts "\nThe order has been processed\n"
+    end
+end
+    
+end
 
 
 loop do 
     puts """
     User Menu:
     1.View all Inventory
-    2.View one inventory item
+    2.View item description
     3.Process order
-    4.View stock level  
+    4.View items to be ordered  
     5.Exit
     """
     puts "Make a selection between 1 and 5"
@@ -87,44 +116,52 @@ loop do
         display_products(all_products)
     when 2
         find_one_item(all_products)
+        ##user input for selection errors if the input is mistyped
+    when 3
+        puts """
+        User Menu:
+        1.Process an order
+        2.exit
+        \nMake a selecton between 1 and 2
+        """
+        print ">"
+        selection = gets.strip.to_i
+        ##user can input enter anything and it will not error
+            until selection == 2 
+            display_products_names(all_products)
+            puts "Enter the name of the product:"
+            print ">"
+            product = gets.strip.capitalize
+            puts "Enter the quantity of the product you need:"
+            print ">"
+            quantity = gets.strip.to_i
+
+            process_order(product,quantity,all_products)
+        
+            puts """
+            User Menu:
+            1.Process another order
+            2.exit
+            """
+            print ">"
+            selection = gets.strip.to_i
+            end
+
+    when 4
+        all_products.each do |product|
+            if product.inventory < 500
+                    puts """
+                    Product = #{product.name}
+                    Inventory = #{product.inventory}
+                    """
+            end
+        # name = product.name
+        # inventory =  product.inventory
+        # puts "#{name}= #{inventory}"
+        end
     when 5
         break
     end  
 end 
-
-
-
-# puts "\n\nUser Menu:
-#      1.\n\nUser Menu:
-#      1.View all Inventory
-#      2.View one inventory item
-#      3.Process order
-#      4.View stock level  
-#      5.Exit"
-# print ">"
-# user_selection = gets.strip.to_i
-
-# until user_selection == 5
-
-#     if user_selection == 1
-        
-#     elsif user_selection == 2
-#         # view each item
-#     elsif user_selection == 3
-#         # process order
-#     elsif user_selection == 4
-#         # view stock level
-#     end
-    
-#     puts "\n\nUser Menu:
-#     1.\n\nUser Menu:
-#     1.View all Inventory
-#     2.View one inventory item
-#     3.Process order
-#     4.View stock level  
-#     5.Exit"
-# print ">"
-# user_selection = gets.strip.to_i
-# end
 
 
