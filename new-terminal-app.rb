@@ -30,7 +30,7 @@ loop do
   4.Print items that need ordering.
   5.Exit
   """
-  puts "Make a selection between 1 and 5 and press enter"
+  puts "Make a selection between 1 and 5 and press enter:"
   print "> "
   selection = gets.chomp.to_i
   case selection
