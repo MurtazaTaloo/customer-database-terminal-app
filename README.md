@@ -55,6 +55,7 @@ Run the build.sh file.
 2. Option 2 lets you see more details of an individual item including full description and supplier details.
 3. Option 3 lets you enter the product name and quantity of the orders received so it can reflects those changes on the inventory level.
 4. Option 4 displays only the list of products low on stock and creates a csv file with the supplier details.
+5. Option 5 lets you exit the application.
 
 ## Control Flow Diagram
 
