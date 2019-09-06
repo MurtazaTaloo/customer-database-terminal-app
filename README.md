@@ -56,13 +56,12 @@ Run the build.sh file.
 3. Option 3 lets you enter the product name and quantity of the orders received so it can reflects those changes on the inventory level.
 4. Option 4 displays only the list of products low on stock and creates a csv file with the supplier details.
 
-
-## Manual Testing Documentation
-Click [here](https://docs.google.com/spreadsheets/d/1y-dEJ3uieKyzid98XrQKiSz9HSL37IwCsME3mzzeu3M/edit?usp=sharing) for the testing documentation.
-
-
 ## Control Flow Diagram
 
 ![flowchart](Flowchart.png)
+
+
+## Manual Testing Documentation
+Click [here](https://docs.google.com/spreadsheets/d/1y-dEJ3uieKyzid98XrQKiSz9HSL37IwCsME3mzzeu3M/edit?usp=sharing) for the testing documentation.
 
 
