@@ -1,10 +1,14 @@
 # Help file
 
-### Steps to install the application
-Run the bash file
+## GitHub link
+- [Repository] https://github.com/MurtazaTaloo/customer-database-terminal-app
+
+
+## Steps to install the application
+Run the build.sh file.
 
 ### Dependencies
-* Must have ruby insatlled on the system
+* Must have ruby insatlled on the system. I Used 'rbenv' which required homebrew.
 * Must have following gems intalled :
 1. colorize
 2. Terminal table
