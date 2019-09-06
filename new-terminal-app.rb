@@ -25,7 +25,7 @@ loop do
   puts """
   User Menu:
   1.View all Inventory
-  2.View item description
+  2.View details of each item.
   3.Process order
   4.Print items that need ordering.
   5.Exit
